@@ -1,23 +1,346 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
-    <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
-    </nav>
-    <main>
-      <h1>Home page</h1>
-    </main>
-  </body>
-</html>
+
+ <style>
+    /* 기본 스타일 */
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      line-height: 1.7;
+      margin: 0;
+      padding: 0;
+      background: #f4f7f6; /* 부드러운 배경색 */
+      color: #333;
+    }
+    header, section, footer {
+      max-width: 900px;
+      margin: 20px auto;
+      padding: 30px;
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+    h1, h2, h3, h4 {
+      color: #0077b6; /* 제주 바다를 연상시키는 부드러운 파란색 */
+      text-align: center;
+      line-height: 1.4;
+      font-weight: 700;
+      margin-top: 20px;
+    }
+    h1 { font-size: 2.5rem; }
+    h2 { font-size: 2rem; border-bottom: 2px solid #e0eaf4; padding-bottom: 10px; }
+    h3 { font-size: 1.6rem; color: #005f9c; }
+    p { margin-bottom: 1.2rem; }
+    ul, ol { padding-left: 20px; margin-bottom: 1.5rem; }
+    li { margin-bottom: 0.8rem; line-height: 1.6; }
+    table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 0.95rem; }
+    th, td { border: 1px solid #e0e0e0; padding: 12px; text-align: left; vertical-align: middle; }
+    th { background: #e0f2f7; color: #005f9c; font-weight: 700; text-align: center; }
+    a { color: #0077b6; text-decoration: none; transition: color 0.3s ease; }
+    a:hover { text-decoration: underline; color: #005f9c; }
+    strong { color: #005f9c; font-weight: 700; }
+    /* CTA 버튼 스타일 */
+    .btn-cta {
+      display: inline-block;
+      padding: 15px 30px;
+      background: #0077b6;
+      color: #fff;
+      font-weight: 700;
+      border-radius: 30px;
+      box-shadow: 0 4px 10px rgba(0, 119, 182, 0.4);
+      transition: all 0.3s ease;
+      text-align: center;
+      margin: 20px auto;
+      cursor: pointer;
+      border: none;
+      font-size: 1.1rem;
+      text-transform: uppercase;
+    }
+    .btn-cta:hover {
+      background: #005f9c;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px rgba(0, 119, 182, 0.6);
+    }
+    /* 이미지 스타일 */
+    .full-width-image {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+    /* 앵커 스타일 (내부 링크용) */
+    .anchor {
+      display: block;
+      position: relative;
+      top: -80px; /* 고정 헤더 높이 감안 */
+      visibility: hidden;
+    }
+    /* 반응형 디자인 */
+    @media (max-width: 768px) {
+      header, section, footer { margin: 10px; padding: 20px; }
+      h1 { font-size: 2rem; }
+      h2 { font-size: 1.7rem; }
+      .btn-cta { width: 100%; padding: 18px 0; }
+      table, thead, tbody, th, td, tr { display: block; }
+      tr { margin-bottom: 15px; border: 1px solid #eee; border-radius: 8px; }
+      td { border: none; border-bottom: 1px solid #eee; position: relative; padding-left: 50%; text-align: right; }
+      td:before { content: attr(data-label); position: absolute; left: 10px; font-weight: bold; }
+      th { display: none; }
+    }
+  </style>
+
+  <!-- Schema.org LocalBusiness Markup (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "제주도 인터넷 설치 비교 및 추천 센터",
+    "image": "https://images.pexels.com/photos/1105151/pexels-photo-1105151.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+    "url": "https://www.yourdomain.com/jeju-internet",
+    "telephone": "064-123-4567",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "제주특별자치도 제주시 첨단로 242",
+      "addressLocality": "제주시",
+      "addressRegion": "제주특별자치도",
+      "postalCode": "63309",
+      "addressCountry": "KR"
+    },
+    "areaServed": {
+      "@type": "City",
+      "name": ["제주시", "서귀포시", "제주특별자치도"]
+    },
+    "priceRange": "₩₩₩",
+    "description": "2026년 제주도 인터넷 설치 가입 전문 서비스. KT, SKT, LG U+ 3사 통신사별 요금제, 가격, 사은품, 현금지원 혜택을 비교하여 가장 저렴하고 빠른 인터넷 상품을 추천합니다. 제주시, 서귀포시 전 지역 당일 설치 가능."
+  }
+  </script>
+</head>
+
+<body>
+  <header>
+    <h1>제주도 인터넷 설치, 2026년 최적의 가입 조건을 찾아드립니다.</h1>
+    <p>제주도민이라면 반드시 확인해야 할 인터넷 가입 팁! <strong>현금지원, 사은품, 요금제 비교</strong>까지 한 번에 해결하세요.</p>
+    <button class="btn-cta" onclick="location.href='#contact'">지금 1:1 맞춤 상담 신청 (24시간 가능)</button>
+  </header>
+
+  <nav aria-label="페이지 내 이동">
+    <section class="navigation-menu">
+      <ul style="display: flex; justify-content: space-around; list-style-type: none; padding: 0;">
+        <li><a href="#coverage">서비스 가능 지역</a></li>
+        <li><a href="#comparison">3사 통신사 비교</a></li>
+        <li><a href="#benefits">사은품 및 현금지원</a></li>
+        <li><a href="#process">설치 가이드 및 유의사항</a></li>
+        <li><a href="#review">실제 후기 및 평가</a></li>
+        <li><a href="#contact">상담 신청</a></li>
+      </ul>
+    </section>
+  </nav>
+
+  <!-- 메인 이미지 섹션 -->
+  <section id="main-visual">
+    <img src="https://images.pexels.com/photos/1105151/pexels-photo-1105151.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="제주도 풍경과 고속 인터넷 이미지" class="full-width-image">
+    <p style="text-align: center; font-style: italic; color: #666;">제주도의 아름다운 풍경만큼 빠르고 안정적인 인터넷 환경을 위한 선택 가이드</p>
+  </section>
+
+  <section id="introduction">
+    <span id="introduction-anchor" class="anchor"></span>
+    <h2>제주도 인터넷 설치, 왜 전문가와 상담해야 할까요?</h2>
+    <p>제주특별자치도는 섬이라는 지리적 특성상 육지와는 다른 통신 환경을 가지고 있습니다. 최근 제주시, 서귀포시를 중심으로 인구가 급증하고 신규 주택(아파트, 빌라, 오피스텔)이 늘어나면서 초고속 인터넷 설치에 대한 수요가 폭발적으로 증가했습니다. 그러나 단순한 가격 비교만으로는 본인의 환경에 맞는 최적의 서비스를 찾기 어렵습니다. 특히 <strong>신축 건물</strong>이나 <strong>도심 외곽 지역</strong>(읍면 지역)은 통신사별 커버리지나 인프라 구축 여부가 달라지기 때문에 전문가의 정확한 분석이 필요합니다.</p>
+    <p><strong>2026년</strong> 기준으로 통신 3사(KT, SKT, LG U+)의 경쟁이 치열해지면서, 가입 시 제공되는 <strong>현금지원</strong>이나 <strong>사은품 혜택</strong> 또한 크게 변동합니다. 저희는 제주도 전 지역의 통신 환경 데이터를 기반으로 고객님의 주거 형태(원룸, 투룸, 아파트, 빌라 등)와 사용 패턴을 분석하여 가장 저렴하고 빠른 인터넷 상품을 추천해 드립니다. <strong>내돈내산</strong> 후기를 참고하여 합리적인 선택을 할 수 있도록 돕습니다.</p>
+    <p>인터넷 설치 비용은 <strong>평균적으로 얼마</strong> 정도 들어갈까요? 이는 통신사, 요금제(광랜, 기가인터넷), 결합 상품 여부, 설치 환경 등에 따라 달라집니다. 저희는 <strong>예상 비용</strong>을 투명하게 공개하고, 고객님의 <strong>예산</strong>에 맞는 최적의 <strong>가격</strong>으로 가입을 도와드립니다.</p>
+  </section>
+
+  <section id="coverage">
+    <span id="coverage-anchor" class="anchor"></span>
+    <h2>제주도 인터넷 설치 가능 지역 상세 안내 (30개 이상 지역 키워드 포함)</h2>
+    <p>저희는 제주특별자치도 전 지역에 걸쳐 초고속 인터넷 설치를 지원합니다. 특히 제주시와 서귀포시의 주요 도심 지역은 물론, 통신 인프라가 취약할 수 있는 읍면 지역까지 커버리지를 확인해 드립니다.</p>
+    <h3>1. 제주시 지역 (구도심 및 신도심)</h3>
+    <p>제주시 지역은 인구 밀집도가 높고 신도시 개발이 활발하여 대부분의 지역에서 기가인터넷 설치가 가능합니다. 특히 <strong>연동</strong>, <strong>노형동</strong>, <strong>이도이동</strong>, <strong>일도이동</strong>, <strong>아라일동</strong>, <strong>삼양동</strong>, <strong>화북동</strong> 등의 중심 지역은 경쟁이 치열하여 혜택이 좋습니다. 최근 개발된 <strong>첨단과학기술단지</strong> 인근이나 <strong>외도지구</strong>, <strong>삼화지구</strong>, <strong>오라동</strong> 신축 아파트 단지에서는 초고속망 설치가 용이합니다. 또한, <strong>구좌읍</strong>, <strong>조천읍</strong>, <strong>애월읍</strong>, <strong>한림읍</strong> 등 관광객이 많은 읍면 지역의 펜션이나 숙박시설에서도 안정적인 인터넷 환경 구축을 돕습니다.</p>
+    <h3>2. 서귀포시 지역 (서귀포 구도심 및 읍면 지역)</h3>
+    <p>서귀포시 지역은 제주시보다 상대적으로 외곽 지역이 많아 통신사별 커버리지 차이가 더 뚜렷합니다. <strong>서귀포동 홍동</strong>, <strong>동홍동</strong>, <strong>서홍동</strong> 등 중심가와 <strong>신시가지(강정동, 법환동)</strong>는 설치가 원활하지만, <strong>성산읍</strong>, <strong>표선면</strong>, <strong>남원읍</strong>, <strong>안덕면</strong>, <strong>대정읍</strong> 등의 읍면 지역은 현장 확인이 필수입니다. 특히 <strong>모슬포항</strong>, <strong>화순리</strong>, <strong>사계리</strong> 등 외곽 지역은 광케이블 구축이 덜 된 곳이 있어, 전문가의 사전 진단이 필요합니다. <strong>가파도</strong>나 <strong>마라도</strong>, <strong>우도</strong> 등의 도서 지역은 특수 설치가 필요하므로 반드시 사전에 문의해야 합니다.</p>
+    <h3>3. 제주도 내 주요 동네 키워드</h3>
+    <p><strong>제주시:</strong> 연동, 노형동, 이도동, 일도동, 아라동, 삼양동, 화북동, 외도동, 도두동, 용담동, 오라동, 해안동, 봉개동, 건입동, 이호동, 내도동, 하귀동, 애월읍, 조천읍, 구좌읍, 한림읍, 한경면, 추자면, 우도면, 조천읍 함덕리, 한림읍 협재리, 애월읍 하귀리.</p>
+    <p><strong>서귀포시:</strong> 동홍동, 서홍동, 강정동, 법환동, 신효동, 하효동, 상효동, 보목동, 서귀포동, 중문동, 예래동, 대정읍, 남원읍, 성산읍, 안덕면, 표선면, 대포동, 서호동, 호근동, 토평동, 하원동, 상예동, 중문관광단지 인근, 성산읍 고성리, 표선면 세화리, 대정읍 하모리.</p>
+  </section>
+
+  <section id="comparison">
+    <span id="comparison-anchor" class="anchor"></span>
+    <h2>제주도 인터넷 설치, 통신 3사(KT, SKT, LG U+) 장단점 비교</h2>
+    <p>제주도민이라면 어떤 통신사를 선택해야 할까요? <strong>KT, SKT, LG U+</strong> 세 통신사는 각각 다른 강점을 가지고 있습니다. 특히 제주도 특성상 통신사별 커버리지나 인프라 우위가 다를 수 있으므로 신중한 비교가 필요합니다.</p>
+    <h3>1. KT (케이티)</h3>
+    <p>KT는 제주도에 가장 오래된 통신망을 구축한 통신사입니다. <strong>제주도 인터넷 설치 커버리지</strong> 측면에서 가장 안정적이며, 특히 외곽 지역이나 신축 건물이 아닌 구도심의 오래된 아파트나 빌라에서도 광케이블 설치가 수월한 경우가 많습니다. <strong>단점</strong>은 요금제가 상대적으로 비싸거나 결합 상품 할인이 복잡할 수 있다는 점입니다. <strong>장점</strong>은 압도적인 인프라를 바탕으로 A/S가 빠르고 안정적이며, TV 서비스 품질이 우수하다는 평가를 받습니다. <strong>내돈내산</strong> 후기를 보면, "제주도 외곽에 거주한다면 KT가 답이다"라는 의견이 많습니다.</p>
+    <h3>2. SKT (에스케이텔레콤)</h3>
+    <p>SKT는 이동통신 1위 사업자답게 모바일 결합 상품을 통한 <strong>할인 혜택</strong>이 강력합니다. SKT 스마트폰 사용자가 제주도 인터넷 가입을 한다면 SKT 결합 상품을 통해 요금을 크게 절감할 수 있습니다. <strong>단점</strong>은 일부 읍면 지역이나 신규 개발 지역에서는 광케이블 구축이 KT보다 늦을 수 있다는 점입니다. <strong>장점</strong>은 결합 시 <strong>현금지원</strong> 금액이 높고, T멤버십 등 다양한 부가 혜택이 많습니다. <strong>추천</strong> 대상은 SKT 가족 구성원이 많은 가정입니다.</p>
+    <h3>3. LG U+ (엘지 유플러스)</h3>
+    <p>LG U+는 최근 가장 공격적으로 시장 점유율을 늘리고 있는 통신사입니다. 특히 <strong>요금제 가격</strong>이 상대적으로 저렴한 편이며, <strong>사은품</strong> 및 <strong>현금지원</strong> 경쟁에서 우위를 점하는 경우가 많습니다. <strong>장점</strong>은 IPTV 서비스가 편리하고 콘텐츠가 풍부하며, <strong>단점</strong>은 제주도 내 일부 지역에서 광케이블 인프라가 미흡할 수 있으므로 반드시 사전 조회가 필요합니다. <strong>신규 가입</strong> 고객에게 많은 혜택을 제공하며, 저렴한곳을 찾는 고객에게 적합한 통신사입니다.</p>
+    <p style="text-align: right; font-size: 0.9em; color: #777;">*통신사별 장단점은 2026년 1월 기준이며, 정책에 따라 변경될 수 있습니다.</p>
+
+    <h3>통신사별 평균 요금제 비교 (2026년 기준)</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>통신사</th>
+          <th>인터넷 속도</th>
+          <th>평균 월 요금 (3년 약정, VAT 포함)</th>
+          <th>모바일 결합 시 할인폭</th>
+          <th>주요 특징</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>KT</td>
+          <td>100M 광랜</td>
+          <td>약 22,000원</td>
+          <td>2,200원 ~ 11,000원</td>
+          <td>압도적 커버리지, 안정성 높음</td>
+        </tr>
+        <tr>
+          <td>KT</td>
+          <td>500M 기가라이트</td>
+          <td>약 33,000원</td>
+          <td>4,400원 ~ 16,500원</td>
+          <td>제주도 외곽 지역도 안정적</td>
+        </tr>
+        <tr>
+          <td>SKT</td>
+          <td>100M 광랜</td>
+          <td>약 22,000원</td>
+          <td>3,300원 ~ 16,500원</td>
+          <td>모바일 결합 할인 최강자</td>
+        </tr>
+        <tr>
+          <td>SKT</td>
+          <td>500M 기가라이트</td>
+          <td>약 33,000원</td>
+          <td>5,500원 ~ 22,000원</td>
+          <td>신규 개발 지역 인프라 확장 중</td>
+        </tr>
+        <tr>
+          <td>LG U+</td>
+          <td>100M 광랜</td>
+          <td>약 22,000원</td>
+          <td>3,300원 ~ 11,000원</td>
+          <td>IPTV 콘텐츠 우수, 저렴한 가격</td>
+        </tr>
+        <tr>
+          <td>LG U+</td>
+          <td>500M 기가라이트</td>
+          <td>약 33,000원</td>
+          <td>4,400원 ~ 16,500원</td>
+          <td>파격적인 사은품 제공 가능성 높음</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p style="text-align: center;"><strong>주의:</strong> 위 표는 평균적인 가격이며, 실제 <strong>견적</strong>은 고객님의 주거 환경 및 결합 상품에 따라 달라집니다. 정확한 <strong>예상 금액</strong> 확인은 전문가 상담이 필수입니다.</p>
+  </section>
+
+  <section id="benefits">
+    <span id="benefits-anchor" class="anchor"></span>
+    <h2>제주도 인터넷 가입, 현금지원 및 사은품 혜택 극대화 전략</h2>
+    <p>인터넷 가입 시 가장 중요한 요소 중 하나는 <strong>현금지원</strong>과 <strong>사은품 혜택</strong>입니다. 통신사 본사나 일반 대리점에서 가입하는 것보다, 온라인 전문 <strong>업체</strong>를 통해 가입하는 것이 혜택을 극대화하는 가장 좋은 방법입니다. 2026년 정부 지침에 따라 사은품 상한액이 정해져 있지만, 실제 <strong>지원금</strong>은 업체별로 차이가 발생합니다.</p>
+
+    <h3>1. 현금지원/사은품 혜택 최적화 방안</h3>
+    <p><strong>결합 상품 활용:</strong> 인터넷과 TV, 그리고 휴대폰을 함께 결합하는 것이 <strong>현금지원</strong> 및 <strong>할인</strong>을 극대화하는 기본 전략입니다. 특히 SKT, KT, LG U+는 가족 구성원의 휴대폰 요금을 합쳐서 할인해주는 '가족 결합 할인'을 제공합니다. <strong>신규 가입</strong> 고객에게는 더 많은 <strong>현금지원</strong>이 이루어지는 경향이 있습니다.</p>
+    <p><strong>추천 및 비교:</strong> 다양한 업체의 <strong>순위</strong>와 <strong>비교</strong>를 통해 <strong>가장 저렴한곳</strong>을 찾아야 합니다. 단순히 <strong>가격</strong>만 보고 <strong>싼곳</strong>을 찾는 것보다는, 실제 <strong>현금지원</strong> 규모와 사은품 구성을 확인하는 것이 중요합니다. 저희는 제주도 내에서 신뢰도가 높은 <strong>전문 업체</strong>만을 <strong>추천</strong>합니다.</p>
+    <p><strong>상품권 vs. 현금:</strong> 대부분의 고객은 현금 지원을 선호하지만, <strong>상품권</strong>(백화점 상품권, 신세계 상품권 등)을 포함하여 혜택을 받는 것도 좋은 방법입니다. 업체별로 제공하는 혜택의 종류가 다르므로, 상담 시 원하는 형태를 미리 요청하세요.</p>
+
+    <h3>2. 2026년 인터넷 가입 현금지원 평균 금액 (예상)</h3>
+    <p>다음은 2026년 초고속 인터넷 가입 시 예상되는 평균 현금지원 금액입니다. 이는 통신사 정책과 가입 채널에 따라 변동될 수 있습니다.</p>
+    <ul>
+      <li><strong>인터넷 단독 가입 (100M 광랜 기준):</strong> 평균 10만원 ~ 15만원대</li>
+      <li><strong>인터넷+TV 결합 가입 (100M 광랜 기준):</strong> 평균 30만원 ~ 40만원대</li>
+      <li><strong>인터넷+TV+핸드폰 결합 (가족 3인 이상):</strong> 평균 40만원 ~ 50만원대 이상</li>
+    </ul>
+
+    <p style="text-align: right; font-size: 0.9em; color: #777;">*현금지원 금액은 통신사 정책, 요금제, 가입 조건에 따라 달라지며, 상담을 통해 정확한 혜택을 확인해야 합니다.</p>
+  </section>
+
+  <section id="process">
+    <span id="process-anchor" class="anchor"></span>
+    <h2>제주도 인터넷 설치 과정 및 필수 체크리스트 (2026년 업데이트)</h2>
+    <p>인터넷 설치는 간단해 보이지만, 이사나 신규 가입 시 놓치면 안 되는 부분이 많습니다. 특히 제주도는 설치 기사님의 출장 일정이 육지보다 빡빡할 수 있으므로, 미리미리 준비하는 것이 중요합니다.</p>
+
+    <h3>1. 설치 전 준비 사항</h3>
+    <ul>
+      <li><strong>주소 정확한 확인:</strong> 제주도 내 읍면 지역은 주소지가 정확해야 통신사 인프라 조회가 가능합니다. <strong>신축 건물</strong>의 경우 주소 등록이 늦어질 수 있으므로, 미리 확인하세요.</li>
+      <li><strong>이사 날짜 확정:</strong> 이사 당일 인터넷 설치를 하려면 최소 1주일 전 예약이 필요합니다. <strong>이사 체크리스트</strong>에 인터넷 설치 일정을 가장 먼저 포함하세요.</li>
+      <li><strong>약정 기간 확인:</strong> 기존 통신사의 약정 기간이 남아있다면 위약금이 발생합니다. 반드시 위약금을 확인하고 해지 또는 이전 설치를 결정하세요.</li>
+    </ul>
+
+    <h3>2. 설치 당일 체크리스트</h3>
+    <ul>
+      <li><strong>인터넷 속도 측정:</strong> 설치 기사님 앞에서 실제로 속도 측정을 해보고 약정된 속도가 나오는지 확인해야 합니다. <strong>기가인터넷</strong>을 신청했다면 500M 이상이 나와야 합니다.</li>
+      <li><strong>Wi-Fi 공유기 확인:</strong> 통신사에서 제공하는 공유기 성능이 기대에 못 미치는 경우가 많습니다. 특히 <strong>오피스텔</strong>이나 <strong>아파트</strong>에서는 무선 품질을 확인하세요.</li>
+      <li><strong>TV 화질 확인:</strong> UHD나 셋톱박스 기능이 제대로 작동하는지 확인합니다.</li>
+    </ul>
+
+    <h3>3. 자주 묻는 질문 (FAQ)</h3>
+    <p><strong>Q: 제주도에서 설치가 불가능한 곳도 있나요?</strong><br>A: 네, 극히 일부 읍면 지역의 외딴 주택이나 <strong>신축 빌라</strong>의 경우 통신 인프라 구축이 안 된 곳이 있을 수 있습니다. 사전에 상담을 통해 정확한 설치 가능 여부를 확인해야 합니다.</p>
+    <p><strong>Q: 반포장이사 또는 원룸 이사 시 인터넷 설치는 어떻게 해야 하나요?</strong><br>A: <strong>원룸 이사</strong>나 <strong>투룸 이사</strong>의 경우 짐이 적어 설치 기사님이 방문하기 전에 짐 정리를 미리 해두면 설치 시간을 절약할 수 있습니다.</p>
+
+    <h3>4. 참고 자료 (외부 신뢰 사이트 링크)</h3>
+    <ul>
+      <li><a href="https://www.kcc.go.kr/index.do" target="_blank">과학기술정보통신부 (KCC)</a>: 인터넷 품질 보장제도(SLA) 및 통신 정책 정보 확인</li>
+      <li><a href="https://namu.wiki/w/%EC%9D%B8%ED%84%B0%EB%84%B7%20%EC%84%A4%EC%B9%98" target="_blank">나무위키 - 인터넷 설치</a>: 통신사별 역사, 기술적 차이점 등 상세 정보</li>
+      <li><a href="https://www.tta.or.kr/" target="_blank">한국정보통신기술협회 (TTA)</a>: 통신 기술 표준 및 품질 인증 정보</li>
+      <li><a href="https://www.jeju.go.kr/index.do" target="_blank">제주특별자치도청</a>: 제주도 지역 개발 및 주택 관련 정보</li>
+      <li><a href="https://www.kdata.or.kr/" target="_blank">한국데이터산업진흥원</a>: 데이터 통신 트렌드 및 기술 동향</li>
+    </ul>
+  </section>
+
+  <section id="review">
+    <span id="review-anchor" class="anchor"></span>
+    <h2>제주도 인터넷 설치, 내돈내산 고객 후기 및 평가</h2>
+    <p>실제 제주도에서 인터넷을 설치한 고객들의 <strong>내돈내산</strong> 후기는 <strong>업체</strong> 선택에 중요한 기준이 됩니다. 단순히 <strong>저렴한곳</strong>이나 <strong>싼곳</strong>을 찾는 것보다, <strong>전문</strong>성과 A/S가 보장되는 <strong>업체</strong>를 선택하는 것이 장기적으로 만족도를 높이는 방법입니다.</p>
+    <h3>1. 고객 평가 항목</h3>
+    <ul>
+      <li><strong>신속한 설치:</strong> 이사 당일 또는 주말 설치가 가능한지 여부.</li>
+      <li><strong>친절한 상담:</strong> 요금제 <strong>차이점</strong>을 명확하게 설명하고, <strong>장단점</strong>을 솔직하게 안내하는지 여부.</li>
+      <li><strong>현금지원 정확성:</strong> 약속된 <strong>현금지원</strong> 금액이 정확하게 지급되는지 여부.</li>
+    </ul>
+    <h3>2. 실제 후기 (가상)</h3>
+    <p>"제주도 이사 오면서 인터넷 가입 때문에 <strong>네이버</strong>, <strong>구글</strong>에서 검색을 많이 했어요. <strong>챗지피티(ChatGPT)</strong>에 물어보기도 하고, <strong>디시인사이드</strong> 같은 커뮤니티에서 <strong>후기</strong>도 찾아봤습니다. 최종적으로 여기 상담을 받았는데, <strong>서귀포시 성산읍</strong> 쪽은 KT 인프라가 제일 좋다는 설명을 듣고 KT로 가입했어요. <strong>현금지원</strong>도 예상 금액보다 많이 받아서 만족합니다." - 서귀포시 성산읍 거주 김OO님</p>
+    <p>"<strong>제주시 노형동</strong> 신축 아파트로 이사하면서 <strong>SKT</strong> 결합 상품으로 바꿨습니다. 원래 <strong>유튜브</strong>나 <strong>인스타그램</strong>을 많이 해서 <strong>기가인터넷</strong>을 신청했는데, 속도도 잘 나오고 <strong>현금지원</strong>도 잘 받았습니다. <strong>AI</strong> 시대에 맞춰 빠른 인터넷이 필수인데, 잘 선택한 것 같아요." - 제주시 노형동 거주 박OO님</p>
+    <p>저희는 고객의 <strong>후기</strong>와 평가를 바탕으로 <strong>순위</strong>가 높은 <strong>전문 업체</strong>만을 선별하여 추천합니다. 복잡한 <strong>비교</strong> 과정 없이, 가장 좋은 <strong>혜택</strong>을 받을 수 있도록 돕습니다.</p>
+  </section>
+
+  <section id="contact">
+    <span id="contact-anchor" class="anchor"></span>
+    <h2>제주도 인터넷 설치 1:1 맞춤 상담 및 견적 문의</h2>
+    <p>고객님의 거주지 주소, 희망 속도, 모바일 결합 여부 등을 알려주시면 가장 정확한 <strong>예상 비용</strong>과 <strong>현금지원</strong> 혜택을 안내해 드립니다. 2026년 최신 <strong>이벤트</strong> 및 <strong>할인</strong> 정보를 확인하여 <strong>저렴한곳</strong>을 찾아드립니다.</p>
+    <form action="/submit" method="POST" style="max-width:600px; margin:auto; padding: 20px; border: 1px solid #ddd; border-radius: 8px;">
+      <label for="name">이름<span style="color:red;">*</span></label><br />
+      <input type="text" id="name" name="name" required style="width:100%; padding:10px; margin-bottom:15px; border-radius: 5px; border: 1px solid #ccc;" />
+
+      <label for="phone">연락처<span style="color:red;">*</span></label><br />
+      <input type="tel" id="phone" name="phone" required placeholder="010-1234-5678" pattern="[0-9\-]+" style="width:100%; padding:10px; margin-bottom:15px; border-radius: 5px; border: 1px solid #ccc;" />
+
+      <label for="address">설치 희망 주소 (예: 제주특별자치도 제주시 노형동 123-4)</label><br />
+      <input type="text" id="address" name="address" placeholder="예: 제주시 노형동 또는 서귀포시 성산읍" style="width:100%; padding:10px; margin-bottom:15px; border-radius: 5px; border: 1px solid #ccc;" />
+
+      <label for="move-date">설치 희망 날짜</label><br />
+      <input type="date" id="move-date" name="move_date" style="width:100%; padding:10px; margin-bottom:15px; border-radius: 5px; border: 1px solid #ccc;" />
+
+      <label for="speed">희망 인터넷 속도<span style="color:red;">*</span></label><br />
+      <select id="speed" name="speed" required style="width:100%; padding:10px; margin-bottom:15px; border-radius: 5px; border: 1px solid #ccc;">
+        <option value="">선택하세요</option>
+        <option value="100M">100M 광랜 (기본형)</option>
+        <option value="500M">500M 기가라이트 (추천)</option>
+        <option value="1G">1G 기가인터넷 (최고 속도)</option>
+      </select>
+
+      <label for="mobile-provider">모바일 사용 통신사 (결합 할인 확인)</label><br />
+      <select id="mobile-provider" name="mobile_provider" style="width:100%; padding:10px; margin-bottom:15px; border-radius: 5px; border: 1px solid #ccc;">
+        <option value="">선택 안함</option>
+        <option value="KT">KT</option>
+        <option value="SKT">SKT</option>
+        <option value="LG U+">LG U+</option>
+        <option value="MVNO">알뜰폰 (MVNO)</option>
+      </select>
+
+      <label for="message">추가 문의 사항 (현금지원, 사은품 등)</label><br />
+      <textarea id="message" name="message" rows="4" style="width:100%; padding:10px; margin-bottom:20px; border-radius: 5px; border: 1px solid #ccc;" placeholder="예: 현금지원 많이 받고 싶어요 / TV 결합도 희망합니다 / 기존 약정 해지 관련 문의"></textarea>
+
+      <button type="submit" class="btn-cta">상담 문의 보내기</button>
+    </form>
+  </section>
+
+  
